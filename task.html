@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Game</title>
+    <link rel="icon" type="images/icon" href=" https://www.freeiconspng.com/uploads/-group-icon-png-displaying-19-images-for-group-icon-png-toolbar-creator-22.png">
+    <link rel="stylesheet" href="/task.css">
+</head>
+<body>
+  
+  <div id="heading">
+    <h1>rock paper scissor</h1>
+  </div>
+  <div class="score">
+    <div id="playerScore" title="Player Score">
+    <h2 >player score</h2>
+    <p>0</p></div>
+   <div id="computerScore" title="computer Score"> <h2 >computer score</h2>
+    <p>0</p></div>
+  </div>
+  <div class="gameScreen">
+    <h2>welcome to have fun</h2>
+    <button id="playbtn">continue</button>
+    <button id="newgame">new game</button>
+  </div>
+  <div class="playArea fadeout">
+    <h3 id="winner">choose any option</h3>
+    <div id="hands">
+        <img src="/rock-paper-scissor/rock.png" alt="" id="playerHand">
+        <img src="/rock-paper-scissor/rock.png" alt="" id="computerHand">
+    </div>
+   <div id="options"> <button id="rock">rock</button>
+    <button id="paper">paper</button>
+    <button id="scissor">scissor</button></div>
+   <div class="decide"> <button id="restart">restart</button>
+    <button id="exit">exit</button>
+  </div>
+  </div>
+  <audio src="/audios/click.mp3" id="click"></audio>
+  <audio src="/audios/win.mp3" id="win"></audio>
+  <audio src="/audios/lose.mp3" id="lose"></audio>
+  <audio src="/audios/impact.mp3" id="impact"></audio>
+
+    <script src="/task.js"></script>
+</body>
+</html>

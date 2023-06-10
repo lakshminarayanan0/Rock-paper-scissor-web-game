@@ -1,0 +1,343 @@
+ ::selection{
+    background-color: rgb(151, 140, 140);
+    color: rgb(6, 6, 79);
+ }
+ *{
+    margin:0px;
+    padding:0px;
+ }
+ #heading{
+    width:100%;
+    height:50px;
+    /* background-color: black; */
+    border-bottom: dotted 2px whitesmoke;
+    position:sticky;
+ }
+ #heading h1{
+    text-align: center;
+    text-transform: uppercase;
+    font-family:Verdana;
+    letter-spacing:8px;
+    color: chartreuse;
+    font-size: 35px;
+    /* text-shadow:2px 2px 6px rgb(246, 246, 243); */
+    -webkit-text-stroke:1.5px rgb(6, 59, 17);
+    
+ }
+ .score{
+    width:100%;
+    height:80px;
+    /* background-color: black; */
+    display: flex;
+    border-bottom: dotted 2px white;
+    position: sticky;
+
+ }
+ #playerScore{
+    width:50%;
+    height:80px;
+    text-align: center;
+   
+    
+    /* background-color: aliceblue; */
+ }
+ #computerScore{
+    width:50%;
+    height:80px;
+    text-align: center;
+    /* background-color: rgb(35, 152, 254);*/
+ } 
+ #playerScore h2,p{
+    text-transform: uppercase;
+    font-family:Verdana;
+    letter-spacing:8px;
+    font-size: 25px;
+    color: rgb(240, 242, 243);
+    -webkit-text-stroke:1px black;
+    padding: 5px;
+    font-weight: bolder;
+    /* text-shadow:2px 2px 6px rgb(246, 246, 243); */
+
+ }   
+
+ #computerScore h2,p{
+    text-transform: uppercase;
+    font-family:Verdana;
+    letter-spacing:8px;
+    font-size: 25px;
+    color: rgb(240, 242, 243);
+    -webkit-text-stroke:1px black;
+    padding: 5px;
+    font-weight: bolder;
+    /* text-shadow:2px 2px 6px rgb(246, 246, 243); */
+ }   
+.playArea{
+    /* width: 100%;
+    height:100vh; */
+    /* background-color: black; */
+    transition: opacity 0.7s ease 0.2s;
+    
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+   
+}
+#winner{
+    text-transform: uppercase;
+    font-family:Verdana;
+    letter-spacing:8px;
+    font-size: 25px;
+    color: rgb(240, 242, 243);
+    -webkit-text-stroke:1px black;
+    text-align: center;
+    padding: 10px;
+    height: 8opx;
+    position: relative;
+    top: 50px;
+   
+    
+}
+#hands{
+    width:100%;
+    height:200px;
+    /* background-color: aliceblue; */
+  
+    display: flex; margin-top: 80px;
+    
+    
+}
+#playerHand,#computerHand{
+    width: 50%;
+    filter: brightness(1);
+    filter:contrast(10);
+    /* filter:saturate(20); */
+    filter: blur(19);
+    mix-blend-mode:overlay;
+    /* opacity: 0; */
+}
+#playerHand{
+transform: rotatey(180deg);
+}
+
+.playArea button{
+    
+    margin-left: 60px;
+    width: 150px;
+    height: 30px;
+    text-transform: uppercase;
+    font-family:Verdana;
+    letter-spacing:6px;
+    font-size: 18px;
+    font-weight: bolder;
+    transition: width .2s ease;
+    
+}
+.playArea button:hover{
+    background-color: black;
+    border:dotted 2px white;
+    color:whitesmoke;
+    width: 155px;
+}
+.gameScreen{
+    width: 100%;
+    height:100vh;
+    /* background-color: black; */
+    text-align: center;
+    display:grid;
+    place-items: center;
+    /* opacity: 0; */
+    
+}
+.gameScreen h2{
+    text-transform: uppercase;
+    font-family:Verdana;
+    letter-spacing:8px;
+    font-size: 35px;
+    color: rgb(240, 242, 243);
+    -webkit-text-stroke:1px black;
+    text-align: center;
+    position: relative;
+  
+}
+#playbtn{
+    width: 200px;
+    height: 30px;
+    text-transform: uppercase;
+    font-family:Verdana;
+    letter-spacing:6px;
+    font-size: 18px;
+    font-weight: bolder;
+    position: relative;
+    bottom: 120px;
+    transition: width .2s ease;
+     
+}
+#playbtn:hover{
+    background-color: black;
+    border:dotted 2px white;
+    color:whitesmoke;
+    width:205px ;
+}
+#newgame{
+    width: 200px;
+    height: 30px;
+    text-transform: uppercase;
+    font-family:Verdana;
+    letter-spacing:6px;
+    font-size: 18px;
+    font-weight: bolder;
+    position: relative;
+    bottom:270px;
+    transition: width .2s ease;
+}
+#newgame:hover{
+    background-color: black;
+    border:dotted 2px white;
+    color:whitesmoke;
+    width:205px ;
+}
+div.fadeout{
+opacity: 0;
+pointer-events: none;
+transition: opacity 0.5s ease-out;
+}
+div.fadein{
+    opacity: 1;
+    pointer-events: all;
+    transition: opacity 0.5s ease-in;
+    }
+body{
+  background:linear-gradient(rgb(27, 48, 103),rgb(33, 93, 82));
+  animation: backflow 30s ease infinite;
+  animation-delay: 5s;
+  animation-timing-function: cubic-bezier(0,42,0,1,1);
+
+  
+}
+#options{
+    margin-top: 50px;
+    margin-left: -60px;
+}
+.decide{
+ position: relative;
+ top: 40px;
+ left: 40px;
+}
+ 
+
+@keyframes shakePlayer {
+    0%,20%,40%,60%,80%,100%{
+     transform:rotatey(180deg) translatey(3px);
+    }
+    10%,30%,50%,70%,90%{
+        transform:rotatey(180deg) translatey(-2px);
+    }
+}
+@keyframes shakeComputer {
+    0%,20%,40%,60%,80%,100%{
+     transform: translatey(3px);
+    }
+    10%,30%,50%,70%,90%{
+        transform: translatey(-2px);
+    }
+}
+@keyframes shakeResult {
+        0% {
+          color: rgb(250, 246, 246);
+          transform: scale(0);
+          opacity: 0;
+          text-shadow: 0 0 0 rgba(173, 172, 172, 0);
+        }
+        25% {
+          color: rgb(217, 255, 0);
+          transform: scale(2);
+          opacity: 1;
+          text-shadow: 3px 10px 5px rgba(81, 30, 3, 0.5);
+        }
+        50% {
+          color: rgb(254, 250, 250);
+          transform: scale(1);
+          opacity: 1;
+          text-shadow: 1px 0 0 rgba(236, 194, 10, 0);
+        }
+        100% {
+          /* animate nothing to add pause at the end of animation */
+          transform: scale(1);
+          opacity: 1;
+          text-shadow: 1px 0 0 rgba(174, 66, 66, 0);
+        }
+      }
+@keyframes backflow {
+    0%{
+        background:linear-gradient(rgb(27, 48, 103),rgb(33, 93, 82));
+    }
+     
+    25%{
+        background:linear-gradient(to right,rgb(27, 48, 103),rgb(33, 93, 82));
+    }
+    50%{
+        background:linear-gradient(to top,rgb(27, 48, 103),rgb(33, 93, 82));
+    }
+    75%{
+        background:linear-gradient(to left,rgb(27, 48, 103),rgb(33, 93, 82));
+    }
+    100%{
+        background:linear-gradient(to bottom,rgb(27, 48, 103),rgb(33, 93, 82));
+    }
+}
+
+@media screen and (max-width:900px) {
+
+    #heading{
+width: 100%;
+    }
+    #heading h1{
+        font-size: 30px;
+    }
+    #playerScore h2, p{
+        font-size: 22px;
+    }
+    #computerScore h2, p{
+        font-size: 22px;
+    }
+    .score{
+        width: 100%;
+    }
+    .gameScreen{
+        width: 100%;
+    }
+    .playArea{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:750px) {
+
+    #heading{
+
+width: 100%;
+    }
+    #heading h1{
+        font-size: 25px;
+    }
+    #playerScore h2{
+        font-size: 18px;
+    }
+    #computerScore h2{
+        font-size: 18px;
+    }
+    .score{
+        width: 100%;
+    }
+    .gameScreen{
+        width: 100%;
+    }
+    .playArea{
+        width: 100%;
+    }
+}

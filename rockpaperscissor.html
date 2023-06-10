@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Game</title>
+    
+    <style>
+         *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+ }
+ .game{
+    background-color: black;
+    height: 100vh;
+    font-family: Arial ;
+    color: rgb(206, 208, 209);
+ }
+ .score{
+    height: 20vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+ }
+ .score h1{
+    font-size: 30px;
+ }
+ .score p{
+    font-size: 25px;
+    padding: 10px;
+    text-align: center;
+ }
+ .intro{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 50vh;
+    transition: opacity 0.6s ease;
+    /* opacity: 0; */
+
+ }
+ .intro h1{
+    font-size: 50px;
+
+ }
+ .intro button,.play-area button{
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  border: solid 2px rgb(206, 208, 209); 
+  background-color: green;
+  color: rgb(206, 208, 209);
+  box-shadow: 2px 2px 5px rgb(198, 253, 1);
+  margin-right: 15px;
+  margin-left: 10px;
+  cursor: pointer;
+  margin-top: 10vh;
+ }
+ .play-area{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50%,-50%);
+    transition: opacity 0.7s ease 0.2s;
+    /* opacity: 0; */
+ }
+ .winner{
+    text-align: center;
+    font-size: 50px;
+    margin-top: 10vh;
+    padding-bottom: 10vh;
+ }
+ .player-hand,.computer-hand{
+    width:250px;
+    height: 25vh;
+ }
+ .hands,.options{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+ }
+ .player-hand{
+    transform:rotateX(40deg);
+    transform: rotatey(180deg);
+ }
+ .computer-hand{
+    /* transform:rotateX(40deg); */
+ }
+ div.fadeout{
+    opacity: 0;
+    pointer-events: none;
+ }
+ div.fadein{
+    opacity: 1;
+    pointer-events: all;
+ }
+ @keyframes shakeplayer{
+    0%{
+        transform:rotatey(180deg) translatey(0);
+    }
+    
+    10%{
+        transform:rotatey(180deg) translatey(-30px);
+    }
+    20%{
+        transform:rotatey(180deg) translatey(0);
+    }
+    
+    30%{
+        transform:rotatey(180deg) translatey(-30px);
+    }
+    40%{
+        transform:rotatey(180deg) translatey(0);
+    }
+    
+    50%{
+        transform:rotatey(180deg) translatey(-30px);
+    }
+    60%{
+        transform:rotatey(180deg) translatey(0);
+    }
+    
+    70%{
+        transform:rotatey(180deg) translatey(-30px);
+    }
+    80%{
+        transform:rotatey(180deg) translatey(0);
+    }
+    
+    90%{
+        transform:rotatey(180deg) translatey(-30px);
+    }
+    100%{
+        transform:rotatey(180deg) translatey(0);
+    }
+    
+    
+ }
+ @keyframes shakecomputer{
+    0%{
+        transform: translatey(0);
+    }
+    
+    10%{
+        transform:  translatey(-30px);
+    }
+    20%{
+        transform:  translatey(0);
+    }
+    
+    30%{
+        transform:  translatey( -30px);
+    }
+    40%{
+        transform:  translatey(0);
+    }
+    
+    50%{
+        transform:  translatey( -30px);
+    }
+    60%{
+        transform:  translatey(0);
+    }
+    
+    70%{
+        transform:  translatey( -30px);
+    }
+    80%{
+        transform:  translatey(0);
+    }
+    
+    90%{
+        transform:  translatey( -30px);
+    }
+    100%{
+        transform:  translatey(0);
+    }
+    
+    
+ }
+    </style>
+</head>
+<body>
+    <div class="game">
+        <div class="score">
+        <div class="player-score">
+        <h1>Player score</h1>
+        <p>0</p></div>
+        <div class="computer-score">
+        <h1>Computer score</h1>
+        <p>0</p>
+        </div>
+        </div>
+        <div class="intro">
+            <h1>rock paper & scissors</h1>
+            <button>let's play</button>
+        </div>
+        <div class="play-area fadeout" >
+            <h2 class="winner">choose an option</h2>
+            <div class="hands">
+                <img src="/images/rock.jpg" alt="" class="player-hand">
+                <img src="/images/rock.jpg" alt="" class="computer-hand">
+            </div>
+                <div class="options">
+                    <button class="rock">rock</button>
+                    <button class="paper">paper</button>
+                    <button class="scissor">scissor</button>
+                </div>
+            
+        </div>
+    </div>
+    
+    <script>
+        //Entire game section
+const game=()=>{
+    let pScore=0;//player score
+    let cScore=0;//computer score
+//intro screen fadeout, play area fade in when button is clicked
+    const start=()=>{
+        let playbtn=document.querySelector('.intro button');
+        let introScreen=document.querySelector('.intro');
+        let match=document.querySelector('.play-area');
+        playbtn.addEventListener('click',()=>{
+            introScreen.classList.add('fadeout');
+            match.classList.add('fadein');
+        });
+        
+    };
+    const playMatch=()=>{
+      let options=document.querySelectorAll('.options button');
+      const playerHand=document.querySelector('.player-hand');
+      const computerHand=document.querySelector('.computer-hand');
+      const hands=document.querySelectorAll('.hands img');
+      hands.forEach(hand=>{
+        hand.addEventListener('animationend',function(){
+            this.style.animation='';
+        });
+
+      });
+
+      let computerOptions=['rock','paper','scissor'];
+    
+      options.forEach(option => {
+        option.addEventListener('click',function(){
+        let computerNumber=Math.floor(Math.random()*3);
+        computerChoice=computerOptions[computerNumber];
+        console.log(computerChoice);
+       setTimeout(()=>{
+        compareHands(this.textContent,computerChoice);
+        //update images
+        playerHand.src=`/images/${this.textContent}.jpg`;
+        computerHand.src=`/images/${computerChoice}.jpg`;
+       },2000);
+       playerHand.style.animation='shakeplayer 2s ease ';
+       computerHand.style.animation='shakecomputer 2s ease';
+        });
+      });
+    };
+    //update score
+    let updateScore=()=>{
+    let playerScore=document.querySelector('.player-score p');
+    let computerScore=document.querySelector('.computer-score p');
+    playerScore.textContent=pScore;
+    computerScore.textContent=cScore;
+    };
+    const compareHands=(playerchoice,computerChoice)=>{
+     const winner=document.querySelector('.winner');
+     
+     //check for tie
+     if(playerchoice===computerChoice){
+        winner.textContent='Match Tied!';
+        return;
+     }
+     //check for rock
+     if(playerchoice==='rock'){
+        if(computerChoice==='paper'){
+            winner.textContent='Computer Wins!';
+            cScore++;
+            updateScore();
+            return;
+        }
+        else{
+            winner.textContent='You Win!';
+            pScore++;
+            updateScore;
+            return;
+        }
+     }
+     //check for paper
+     if(playerchoice==='paper'){
+        if(computerChoice==='scissor'){
+            winner.textContent='Computer Wins!';
+            cScore++;
+            updateScore();
+            return;
+        }
+        else{
+            winner.textContent='You Win!';
+            pScore++;
+            updateScore();
+            return;
+        }
+     }
+     //check for scissor
+     if(playerchoice==='scissor'){
+        if(computerChoice==='rock'){
+            winner.textContent='Computer Wins!';
+            cScore++;
+            updateScore();
+            return;
+        }
+        else{
+            winner.textContent='You Win!';
+            pScore++;
+            updateScore();
+            return;
+        }
+     }
+    };
+    
+    
+    start();
+    playMatch(); 
+    
+};
+ game();
+    </script>
+</body>
+</html>
