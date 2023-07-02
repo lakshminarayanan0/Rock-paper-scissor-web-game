@@ -38,7 +38,7 @@ const game=()=>{
 
 
     const start=()=>{
-        let playbtn=document.querySelector('.gameScreen button');
+        let playbtn=document.querySelector('#playbtn');
         let gameScreen=document.querySelector('.gameScreen');
         let playArea=document.querySelector('.playArea');
         let newgame=document.querySelector('#newgame');

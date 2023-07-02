@@ -7,41 +7,51 @@
     <title> Game</title>
     <link rel="icon" type="images/icon" href=" https://www.freeiconspng.com/uploads/-group-icon-png-displaying-19-images-for-group-icon-png-toolbar-creator-22.png">
     <link rel="stylesheet" href="/task.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
 </head>
 <body>
-  
-  <div id="heading">
-    <h1>rock paper scissor</h1>
+  <div class="header-section sticky-top">
+  <div class="container-fluid fw-bolder border-bottom">
+    <h1 class="fw-bolder text-white text-uppercase text-center ">rock paper scissor</h1>
   </div>
-  <div class="score">
-    <div id="playerScore" title="Player Score">
-    <h2 >player score</h2>
+  <div class="score container-fluid fw-bolder border-bottom d-flex justify-content-between">
+    <div id="playerScore" title="Player Score" class="fw-bolder text-white text-uppercase text-center">
+    <h2 class="fw-light fs-4">player score</h2>
     <p>0</p></div>
-   <div id="computerScore" title="computer Score"> <h2 >computer score</h2>
+   <div id="computerScore" title="computer Score" class="fw-bolder text-white text-uppercase text-center"> 
+    <h2 class="fw-light fs-4" >computer score</h2>
     <p>0</p></div>
   </div>
-  <div class="gameScreen">
-    <h2>welcome to have fun</h2>
-    <button id="playbtn">continue</button>
-    <button id="newgame">new game</button>
+</div>
+  <div class="gameScreen container-fluid  d-flex flex-column align-items-center justify-content-center">
+    <h2 class="fw-bolder text-white text-uppercase text-center">welcome to have fun</h2>
+    <div class="container-fluid p-3 d-flex justify-content-center">
+    <button id="playbtn" class="btn-info p-2 fw-bolder m-2 border">continue</button>
+    <button id="newgame" class="btn-info p-2 fw-bolder m-2 border">new game</button>
   </div>
-  <div class="playArea fadeout">
-    <h3 id="winner">choose any option</h3>
-    <div id="hands">
-        <img src="/rock-paper-scissor/rock.png" alt="" id="playerHand">
-        <img src="/rock-paper-scissor/rock.png" alt="" id="computerHand">
+  </div>
+  <div class="playArea mt-5 container-fluid  d-flex justify-content-center align-items-center flex-column fadeout">
+    <h3 id="winner" class="fw-bold p-2 m-3 text-white">choose any option</h3>
+    <div id="hands" class="container-fluid  d-flex justify-content-center">
+        <img class="img-fluid w-25" src="/rock-paper-scissor/rock.png" alt="" id="playerHand">
+        <img class="img-fluid w-25" src="/rock-paper-scissor/rock.png" alt="" id="computerHand">
     </div>
-   <div id="options"> <button id="rock">rock</button>
-    <button id="paper">paper</button>
-    <button id="scissor">scissor</button></div>
-   <div class="decide"> <button id="restart">restart</button>
-    <button id="exit">exit</button>
+   <div id="options" class="  border"> 
+    <button id="rock" class="btn-info p-1 px-4 text-center fw-bolder m-2 border">rock</button>
+    <button id="paper" class="btn-info p-1 px-3 fw-bolder text-center m-2 border">paper</button>
+    <button id="scissor" class="btn-info p-1 px-3 fw-bolder m-2 border text-center">scissor</button></div>
+   <div class="decide "> 
+    <button id="restart" class="btn-info p-1 px-3 fw-bolder m-2 border text-center">restart</button>
+    <button id="exit" class="btn-info p-1 px-4 fw-bolder m-2 border text-center">exit</button>
   </div>
   </div>
   <audio src="/audios/click.mp3" id="click"></audio>
   <audio src="/audios/win.mp3" id="win"></audio>
   <audio src="/audios/lose.mp3" id="lose"></audio>
   <audio src="/audios/impact.mp3" id="impact"></audio>
+
 
     <script src="/task.js"></script>
 </body>
