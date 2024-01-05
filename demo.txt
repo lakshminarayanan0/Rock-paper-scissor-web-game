@@ -1,1 +1,2 @@
-hello from demo.txt
+
+hello from conflict solved
